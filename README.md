@@ -1,4 +1,4 @@
-# Installation Guid
+# Installation Guide
 Run this to create a new project
 ```
 npx create-react-vscode <your-project-name>
