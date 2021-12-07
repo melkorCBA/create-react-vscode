@@ -1,7 +1,8 @@
 {
   "name": "create-react-vscode",
   "version": "1.0.0",
-  "description": "",
+  "description": "React project generator with preconfigured vscode settings.",
+  "bin": ".bin/cli.js",
   "main": "index.js",
   "scripts": {
     "start": "npx webpack-dev-server",
@@ -9,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "melkorCba",
   "license": "ISC",
   "dependencies": {
     "react": "^17.0.2",
