@@ -1,6 +1,6 @@
 {
   "name": "create-react-vscode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React project generator with preconfigured vscode settings.",
   "bin": ".bin/cli.js",
   "main": "index.js",
