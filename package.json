@@ -13,7 +13,7 @@
     "type": "git",
     "url": "https://github.com/melkorCBA/create-react-vscode.git"
   },
-  "keywords": [],
+  "keywords": ["react", "vscode", "boilerplate", "eslint", "frontend", "project generator"],
   "author": "melkorCba",
   "license": "ISC",
   "dependencies": {
