@@ -32,8 +32,9 @@ This is a react project generator with preconfigured vscode settings. This inclu
 	npm i -D sass sass-loader
 	```
 	```
-	npm i resolve-url-loader
+	npm i resolve-url-loader html-loader
     ```
+	```
 	npm i -D mini-css-extract-plugin
 	```
     ```
@@ -157,10 +158,25 @@ This is a react project generator with preconfigured vscode settings. This inclu
 	  mode: environment,
 	  module: {
 	    rules: [
-	      {
-	        test: /\.scss$/,
-	        use: ['style-loader', 'css-loader', 'sass-loader'],
-	      },
+	       {
+        	test: /\.html$/i,
+        	loader: 'html-loader',
+        	options: {
+        	  // Disables attributes processing
+        	  sources: true,
+        	},
+      	  },
+      	  {
+      	    test: /\.scss$/,
+      	    use: ['style-loader', 'css-loader', 'resolve-url-loader',
+      	      {
+      	        loader: 'sass-loader',
+      	        options: {
+      	          sourceMap: true,
+      	        },
+      	      },
+      	    ],
+      	  },
 	      {
 	        test: /\.css$/,
 	        use: ['style-loader', 'css-loader'],
