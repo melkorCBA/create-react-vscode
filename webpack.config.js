@@ -34,6 +34,14 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          // Disables attributes processing
+          sources: true,
+        },
+      },
+      {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'resolve-url-loader',
           {
