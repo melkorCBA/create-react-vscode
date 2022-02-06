@@ -35,7 +35,14 @@ const config = {
     rules: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'resolve-url-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -54,7 +61,7 @@ const config = {
 };
 
 if (environment === 'production') {
-// eslint-disable-next-line no-console
+  // eslint-disable-next-line no-console
   console.log('environment:', environment);
   config.module.rules[0].use[0] = plugins.miniCssExtract.loader;
   config.module.rules[1].use[0] = plugins.miniCssExtract.loader;

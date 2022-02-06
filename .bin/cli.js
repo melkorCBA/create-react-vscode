@@ -1,46 +1,55 @@
 #!/usr/bin/env node
-const { execSync } = require('child_process');
-const CommandManager = (projectName) => {
-
-    return {
-        run: command => {
-            try {
-                execSync(`${command}`, { stdio: 'inherit' });
-            }
-            catch (e) {
-                console.error(`Failed to execute ${command}`, e);
-                return false;
-            }
-            return true;
-        },
-        getCommands: () => {
-            return {
-                checkout: `git clone --depth 1 https://github.com/melkorCBA/create-react-vscode ${projectName}`,
-                installDeps: `cd ${projectName} && npm i`
-            }
-        }
-    }
-
-
-
-
-
-}
+const { CommandManager, UpdateValuesInPackageFile, ConsoleLog, getFilePathForProjectCWD } = require('./cli.util')
 
 const inputProjectName = process.argv[2];
+let author = ''
+
+
+
 const { run, getCommands } = CommandManager(inputProjectName);
-const { checkout, installDeps } = getCommands();
+const { checkout, installDeps, deleteRemote, deleteBinFolder, deleteGitFolder, initGit } = getCommands();
 
 
-console.log(`Creating new react project ${inputProjectName}`);
+
+console.log(`Creating new React project: ${inputProjectName}`);
 const isCheckoutSuccess = run(checkout);
 if (!isCheckoutSuccess) process.exit(-1);
 
 console.log(`Installing dependencies for project ${inputProjectName}`);
-const isInstallDepsSuccess = run(installDeps);
-if (!isInstallDepsSuccess) process.exit(-1);
+run(installDeps);
 
-console.log('All Done!. Please run folloeing commands to start')
+// remove git remote
+run(deleteRemote);
+// deleting bin folder
+run(deleteBinFolder);
+// deleting exsisting git 
+run(deleteGitFolder);
+// initlize new git
+run(initGit);
+
+// delete unwanted fields from packae.json
+const packageJsonLocation = getFilePathForProjectCWD(process.cwd(), inputProjectName, 'package.json');
+UpdateValuesInPackageFile(packageJsonLocation,
+    {
+        author,
+        version: '1.0.0',
+        name: '' + inputProjectName,
+        description: ''
+    },
+    {
+        bin: 'bin',
+        repository: 'repository',
+        keywords: 'keywords'
+    })
+    .then(() => ConsoleLog('removed repository field from package.json'))
+    .catch((err) => {
+        console.warn('removed repository field from package.json');
+        process.exit(-1);
+    })
+
+//if (!isInstallDepsSuccess && !deleteRemoteSuccess && !deleteBinFolderSuccess && !deleteGitFolderSuccess) process.exit(-1);
+
+console.log('All Done!. Please run following commands to start')
 console.info(`cd ${inputProjectName}`);
 console.log('Serve locally')
 console.log('npm run start')

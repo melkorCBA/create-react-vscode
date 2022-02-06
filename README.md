@@ -31,6 +31,8 @@ This is a react project generator with preconfigured vscode settings. This inclu
 	```
 	npm i -D sass sass-loader
 	```
+	```
+	npm i resolve-url-loader
     ```
 	npm i -D mini-css-extract-plugin
 	```

@@ -1,6 +1,6 @@
 {
   "name": "create-react-vscode",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React project generator with preconfigured vscode settings.",
   "bin": ".bin/cli.js",
   "main": "index.js",
@@ -13,7 +13,14 @@
     "type": "git",
     "url": "https://github.com/melkorCBA/create-react-vscode.git"
   },
-  "keywords": ["react", "vscode", "boilerplate", "eslint", "frontend", "project generator"],
+  "keywords": [
+    "react",
+    "vscode",
+    "boilerplate",
+    "eslint",
+    "frontend",
+    "project generator"
+  ],
   "author": "melkorCba",
   "license": "ISC",
   "dependencies": {
@@ -23,24 +30,26 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/eslint-parser": "^7.16.3",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.5.1",
     "eslint": "^8.4.0",
     "eslint-config-airbnb": "^19.0.2",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "@babel/preset-env": "^7.16.4",
-    "@babel/preset-react": "^7.16.0",
-    "babel-loader": "^8.2.3",
-    "clean-webpack-plugin": "^4.0.0",
-    "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
+    "resolve-url-loader": "^5.0.0",
     "sass": "^1.44.0",
     "sass-loader": "^12.3.0",
+    "source-map-loader": "^3.0.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0"
+    "webpack-dev-server": "^4.7.4"
   }
 }
